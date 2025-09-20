@@ -168,14 +168,14 @@ export function useApiClient() {
     
     // Timeline
     getTimeline: (projectId: string) => 
-      client.get<{ project: { id: string; name: string; status: string }; timeline: Timeline; generated_at: string }>(`/timeline/${projectId}`),
+      client.get<{ project: { id: string; name: string; status: string }; timeline: Timeline; generated_at: string }>(`/timeline?projectId=${encodeURIComponent(projectId)}`),
     
     updateTimelineItem: (projectId: string, itemId: string, status: 'pending' | 'completed' | 'skipped') =>
-      client.patch<{ message: string; item: TimelineItem }>(`/timeline/${projectId}`, { itemId, status }),
+      client.patch<{ message: string; item: TimelineItem }>(`/timeline?projectId=${encodeURIComponent(projectId)}`, { itemId, status }),
     
     // Analytics (public endpoint)
     getSubredditAnalytics: (subreddit: string) =>
-      client.get<SubredditAnalytics>(`/analytics/${subreddit}`),
+      client.get<SubredditAnalytics>(`/analytics?subreddit=${encodeURIComponent(subreddit.replace(/^r\//, ''))}`),
     
     // Health check
     healthCheck: () =>

@@ -60,6 +60,12 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## Project architecture and API docs
+
+For a deep dive into the architecture, environment variables, endpoints, database schema, and local vs production behavior, see:
+
+- docs/context.md
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/16ecfa5b-2d0c-4935-9c65-478117b127cc) and click on Share -> Publish.

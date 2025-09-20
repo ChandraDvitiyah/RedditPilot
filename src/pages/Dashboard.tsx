@@ -16,7 +16,7 @@ import { useApiClient, Project } from "@/lib/api-client";
 import { supabase } from "@/lib/supabase";
 
 const Dashboard = () => {
-  const { signOut, user } = useAuth();
+  const { signOut, user, session } = useAuth();
   const apiClient = useApiClient();
   const navigate = useNavigate();
   const [projects, setProjects] = useState<Project[]>([]);
@@ -254,23 +254,21 @@ const Dashboard = () => {
           description: `Fetching detailed analytics for ${missingSubreddits.length} subreddits`,
         });
 
-        const analyticsResponse = await fetch('http://localhost:3001/api/reddit/subreddit-analytics', {
+        const analyticsResp = await fetch('/api/reddit/subreddit-analytics', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${user.id}` // Simple auth for external API
+            ...(session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {}),
           },
-          body: JSON.stringify({
-            subreddits: missingSubreddits
-          })
+          body: JSON.stringify({ subreddits: missingSubreddits }),
         });
 
-        if (!analyticsResponse.ok) {
+        if (!analyticsResp.ok) {
           throw new Error('Failed to fetch subreddit analytics');
         }
 
-        const analyticsData = await analyticsResponse.json();
-        fetchedAnalytics = analyticsData.analytics.filter((result: any) => result.success);
+        const analyticsData = await analyticsResp.json();
+        fetchedAnalytics = (analyticsData?.analytics || []).filter((result: any) => result.success);
 
         // Step 3: Store new analytics in Supabase
         if (fetchedAnalytics.length > 0) {
@@ -401,22 +399,22 @@ const Dashboard = () => {
         }));
 
         // Generate timeline using backend service
-        const timelineResponse = await fetch('http://localhost:3001/api/reddit/generate-timeline', {
+        const timelineResp = await fetch('/api/reddit/generate-timeline', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${user.id}`
+            ...(session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {}),
           },
           body: JSON.stringify({
             projectId: project.id,
             subreddits: cleanSubreddits,
             karmaLevel: karmaScale,
-            analytics: allAnalytics || []
-          })
+            analytics: allAnalytics || [],
+          }),
         });
 
-        if (timelineResponse.ok) {
-          const timelineData = await timelineResponse.json();
+        if (timelineResp.ok) {
+          const timelineData = await timelineResp.json();
           const generated = timelineData.timeline || timelineData.phases || [];
 
           // If backend returned phases (array of phases with tasks), store as a single row
@@ -461,7 +459,7 @@ const Dashboard = () => {
             }
           }
         } else {
-          console.error('Timeline generation failed:', timelineResponse.status);
+          console.error('Timeline generation failed:', timelineResp.status);
           toast({
             variant: "destructive",
             title: "Timeline Warning", 
