@@ -17,7 +17,7 @@ const Refund = () => {
 
         <h2 className="text-xl font-semibold mt-6">Exceptions & Support</h2>
         <p className="text-muted-foreground mb-4">
-          In the event of technical issues that prevent you from using the Service, please contact support at support@redditpilot.com. While refunds are not provided as a matter of course, we will evaluate exceptional situations on a case-by-case basis and may offer account credits or other remedies when appropriate.
+          In the event of technical issues that prevent you from using the Service, please contact support at contact@redditpilot.com. While refunds are not provided as a matter of course, we will evaluate exceptional situations on a case-by-case basis and may offer account credits or other remedies when appropriate.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">Chargebacks</h2>

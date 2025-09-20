@@ -26,7 +26,7 @@ const Privacy = () => {
 
         <h2 className="text-xl font-semibold mt-6">4. Data Retention and Deletion</h2>
         <p className="text-muted-foreground mb-4">
-          We retain analytics and account data as long as your account exists or as needed to provide the Service. You may request deletion of your account and associated data by contacting support at support@redditpilot.com. We will comply with deletion requests subject to applicable legal obligations.
+          We retain analytics and account data as long as your account exists or as needed to provide the Service. You may request deletion of your account and associated data by contacting support at contact@redditpilot.com. We will comply with deletion requests subject to applicable legal obligations.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">5. Cookies and Tracking</h2>
@@ -41,7 +41,7 @@ const Privacy = () => {
 
         <h2 className="text-xl font-semibold mt-6">7. Contact</h2>
         <p className="text-muted-foreground mb-8">
-          For questions about this Privacy Policy or to request data deletion, contact support@redditpilot.com.
+          For questions about this Privacy Policy or to request data deletion, contact contact@redditpilot.com.
         </p>
 
         <div className="flex items-center space-x-4">

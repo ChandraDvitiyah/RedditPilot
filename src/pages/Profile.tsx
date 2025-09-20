@@ -97,7 +97,7 @@ const Profile = () => {
 
               <div className="flex gap-3">
                 <Button asChild>
-                  <a href="mailto:support@redditpilot.com">Contact Support</a>
+                  <a href="mailto:contact@redditpilot.com">Contact Support</a>
                 </Button>
                 <Button onClick={handleRefreshPayment} disabled={loading}>
                   {loading ? 'Refreshing...' : 'Refresh Payment Status'}

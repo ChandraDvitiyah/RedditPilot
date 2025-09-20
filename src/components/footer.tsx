@@ -22,7 +22,7 @@ const Footer = () => {
           </p>
           
           <div className="flex space-x-6 items-center">
-            <a href="mailto:support@redditpilot.com" className="text-gray-400 hover:text-white text-sm transition-colors">Contact</a>
+            <a href="mailto:contact@redditpilot.com" className="text-gray-400 hover:text-white text-sm transition-colors">Contact</a>
             <a href="/terms" className="text-gray-400 hover:text-white text-sm transition-colors">Terms and Conditions</a>
             <a href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
             <a href="/refund" className="text-gray-400 hover:text-white text-sm transition-colors">Refund Policy</a>
