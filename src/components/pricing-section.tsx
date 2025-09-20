@@ -1,5 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { buildDodoPaymentLink } from "@/lib/dodo";
+
+// NOTE: Landing page Select Plan should NOT prefill discount (PRIVATE20). The modal uses the discount message.
 
 const PricingSection = () => {
   return (
@@ -49,9 +53,7 @@ const PricingSection = () => {
             </div>
 
             {/* CTA Button */}
-            <Button className="w-full mb-8 h-14 text-lg font-bold bg-orange-500 hover:bg-orange-600 border-4 border-foreground shadow-brutal" size="lg">
-              Select Plan
-            </Button>
+            <SelectPlanButton />
 
             {/* Features */}
             <div>
@@ -115,3 +117,36 @@ const PricingSection = () => {
 };
 
 export default PricingSection;
+
+function SelectPlanButton() {
+  const { user, signInWithGoogle, session } = useAuth();
+
+  const handleClick = async () => {
+    // If user is not logged in, trigger OAuth sign-in and then redirect to payment
+    if (!user) {
+      // Persist intent so the login flow knows to redirect to checkout after auth
+      try { localStorage.setItem('rp_pending_checkout', 'true'); } catch {}
+      // Start OAuth flow; Login page will handle redirect after auth
+      await signInWithGoogle();
+      return;
+    }
+
+    const redirectUrl = `${window.location.origin}/payment`;
+    const link = buildDodoPaymentLink({
+      redirectUrl,
+      userEmail: user?.email || null,
+      userId: user?.id || null,
+    });
+    window.open(link, '_blank', 'noopener,noreferrer');
+  };
+
+  return (
+    <Button
+      className="w-full mb-8 h-14 text-lg font-bold bg-orange-500 hover:bg-orange-600 border-4 border-foreground shadow-brutal"
+      size="lg"
+      onClick={handleClick}
+    >
+      Select Plan
+    </Button>
+  );
+}

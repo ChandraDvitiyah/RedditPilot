@@ -3,15 +3,49 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 const Login = () => {
   const { user, signInWithGoogle, loading } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
-      navigate("/dashboard");
-    }
+    const handlePostLogin = async () => {
+      if (!user) return;
+
+      // If user came from Select Plan landing CTA, we stored an intent
+      let pending = false;
+      try { pending = localStorage.getItem('rp_pending_checkout') === 'true'; } catch {}
+
+      if (!pending) {
+        navigate("/dashboard");
+        return;
+      }
+
+      // Clear the intent (prevent loops)
+      try { localStorage.removeItem('rp_pending_checkout'); } catch {}
+
+      // Check payment status in user_account table
+      try {
+        const { data, error } = await supabase
+          .from('user_account')
+          .select('payment_status')
+          .eq('user_id', user.id)
+          .single();
+        if (!error && data && String(data.payment_status || '').toLowerCase() === 'active') {
+          navigate('/dashboard');
+        } else {
+          // Not active: send user to /payment to complete checkout
+          navigate('/payment');
+        }
+      } catch (e) {
+        console.error('Failed to check payment status after login', e);
+        // Default to payment page so user can complete purchase
+        navigate('/payment');
+      }
+    };
+
+    handlePostLogin();
   }, [user, navigate]);
 
   if (loading) {
