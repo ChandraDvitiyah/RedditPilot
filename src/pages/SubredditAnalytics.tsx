@@ -144,14 +144,7 @@ const SubredditAnalytics = () => {
             <p className="text-muted-foreground mb-6 max-w-md mx-auto">
               {error || `No analytics data found for r/${subreddit}`}
             </p>
-            <div className="space-y-2">
-              <p className="text-sm text-muted-foreground">
-                To get analytics for this subreddit, create a project that includes r/{subreddit} as a target.
-              </p>
-              <Link to="/dashboard">
-                <Button>Create New Project</Button>
-              </Link>
-            </div>
+            <MissingAnalyticsCTA subreddit={subreddit || ''} />
           </div>
         </div>
       </div>
@@ -362,3 +355,75 @@ const SubredditAnalytics = () => {
 };
 
 export default SubredditAnalytics;
+
+// --- Helper component to fetch analytics on-demand ---
+import { useAuth } from "@/contexts/AuthContext";
+
+function MissingAnalyticsCTA({ subreddit }: { subreddit: string }) {
+  const { session } = useAuth();
+  const [busy, setBusy] = useState(false);
+
+  const handleFetchNow = async () => {
+    if (!subreddit) return;
+    setBusy(true);
+    try {
+      const clean = subreddit.replace(/^r\//, '');
+      const resp = await fetch('/api/reddit/subreddit-analytics', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {}),
+        },
+        body: JSON.stringify({ subreddits: [clean] }),
+      });
+      if (!resp.ok) throw new Error(`Fetch failed: ${resp.status}`);
+      const json = await resp.json();
+      const ok = (json?.analytics || []).find((e: any) => e.subreddit === clean && e.success);
+      if (!ok) throw new Error('No analytics returned');
+
+      const payload = ok.data;
+      // Upsert to Supabase from frontend per rules
+      const insert = {
+        subreddit: clean,
+        subscriber_count: Number(payload.subscriber_count ?? payload.subscribers ?? 0) || 0,
+        active_users: Number(payload.active_users ?? 0) || 0,
+        activity_heatmap: payload.activity_heatmap ?? null,
+        best_posting_day: typeof payload.best_posting_day === 'number' ? payload.best_posting_day : null,
+        best_posting_hour: typeof payload.best_posting_hour === 'number' ? payload.best_posting_hour : null,
+        top_posts: payload.top_posts ?? null,
+        avg_engagement_score: Number(payload.avg_engagement_score ?? 0) || 0,
+        last_updated: new Date().toISOString(),
+      } as any;
+
+      const { error } = await supabase
+        .from('subreddit_analytics')
+        .upsert(insert, { onConflict: 'subreddit' });
+      if (error) throw error;
+
+      toast({ title: 'Analytics ready', description: `Fetched analytics for r/${clean}` });
+      // Reload page data
+      window.location.reload();
+    } catch (e: any) {
+      console.error(e);
+      toast({ variant: 'destructive', title: 'Failed to fetch analytics', description: e?.message || 'Try again later' });
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <div className="space-y-3">
+      <p className="text-sm text-muted-foreground">
+        You can fetch analytics for r/{subreddit.replace(/^r\//, '')} now. This may take a few seconds.
+      </p>
+      <div className="flex items-center justify-center gap-3">
+        <Button onClick={handleFetchNow} disabled={busy}>
+          {busy ? (<><Loader2 className="w-4 h-4 mr-2 animate-spin" />Fetching…</>) : 'Fetch Now'}
+        </Button>
+        <Link to="/dashboard">
+          <Button variant="outline">Back to Dashboard</Button>
+        </Link>
+      </div>
+    </div>
+  );
+}

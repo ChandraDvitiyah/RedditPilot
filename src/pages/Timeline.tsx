@@ -11,6 +11,7 @@ import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/lib/supabase";
 import { loadProgress, saveProgress } from '@/lib/localProgress';
 import { useAuth } from "@/contexts/AuthContext";
+import { Loader2 } from "lucide-react";
 
 // Types for real project data
 interface Project {
@@ -165,6 +166,7 @@ interface Phase {
 const Timeline = () => {
   const { projectId } = useParams<{ projectId: string }>();
   const { user } = useAuth();
+  const { session } = useAuth();
   const [project, setProject] = useState<Project | null>(null);
   const [timelineTasks, setTimelineTasks] = useState<TimelineTask[]>([]);
   const [phases, setPhases] = useState<Phase[]>([]);
@@ -172,6 +174,7 @@ const Timeline = () => {
   const [expandedTemplate, setExpandedTemplate] = useState<string | null>(null);
   const [editingTemplate, setEditingTemplate] = useState<string | null>(null);
   const [templateContent, setTemplateContent] = useState<string>("");
+  const [regenBusy, setRegenBusy] = useState(false);
 
   // Fetch real project and timeline data
   useEffect(() => {
@@ -459,6 +462,67 @@ const Timeline = () => {
   const completedPhases = phases.filter(phase => phase.completed).length;
   const overallProgress = (completedPhases / phases.length) * 100;
 
+  const shouldShowRegenerate = () => {
+    // Show regenerate when we don't have scheduled_at timestamps in tasks (i.e., default/legacy)
+    const hasScheduled = phases.some(p => p.tasks?.some(t => !!t.scheduled_at));
+    return !!project && !!user && !hasScheduled;
+  };
+
+  const regeneratePhasedTimeline = async () => {
+    if (!project || !user) return;
+    setRegenBusy(true);
+    try {
+      const cleanSubreddits = (project.target_subreddits || []).map(s => s.replace(/^r\//, ''));
+      // Load analytics for project subreddits
+      const { data: analyticsRows, error: aErr } = await supabase
+        .from('subreddit_analytics')
+        .select('*')
+        .in('subreddit', cleanSubreddits);
+      if (aErr) throw aErr;
+
+      const resp = await fetch('/api/reddit/generate-timeline', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {}),
+        },
+        body: JSON.stringify({
+          projectId: project.id,
+          subreddits: cleanSubreddits,
+          karmaLevel: project.karma_level,
+          analytics: analyticsRows || [],
+        }),
+      });
+      if (!resp.ok) throw new Error(`Generate failed: ${resp.status}`);
+      const json = await resp.json();
+      const newPhases = json?.timeline || json?.phases || [];
+      if (!Array.isArray(newPhases) || newPhases.length === 0) throw new Error('No phases returned');
+
+      // Clear legacy rows, then insert single row with phases
+      const { error: delErr } = await supabase
+        .from('project_timelines')
+        .delete()
+        .eq('project_id', project.id)
+        .eq('user_id', user.id);
+      if (delErr) throw delErr;
+
+      const { error: insErr } = await supabase
+        .from('project_timelines')
+        .insert([{ project_id: project.id, user_id: user.id, timeline_data: newPhases, generated_at: new Date().toISOString() }]);
+      if (insErr) throw insErr;
+
+      // Reflect in UI
+      setPhases(newPhases);
+      setTimelineTasks([]);
+      toast({ title: 'Timeline updated', description: 'Phased timeline generated and saved.' });
+    } catch (e: any) {
+      console.error(e);
+      toast({ variant: 'destructive', title: 'Failed to regenerate timeline', description: e?.message || 'Try again later' });
+    } finally {
+      setRegenBusy(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -476,6 +540,11 @@ const Timeline = () => {
           <div className="flex items-center space-x-4">
             <Badge variant="secondary">{project.karma_level.toLocaleString()} karma target</Badge>
             <Badge variant="outline">{Math.round(overallProgress)}% complete</Badge>
+            {shouldShowRegenerate() && (
+              <Button variant="brutal" size="sm" onClick={regeneratePhasedTimeline} disabled={regenBusy}>
+                {regenBusy ? (<><Loader2 className="w-4 h-4 mr-2 animate-spin" />Updating…</>) : 'Regenerate Phased Timeline'}
+              </Button>
+            )}
           </div>
         </div>
       </header>
