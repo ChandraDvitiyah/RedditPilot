@@ -13,7 +13,7 @@ const HeroSection = () => {
         <div className="space-y-8 lg:pr-8">
           {/* Trust Badge */}
           <div className="inline-flex items-center space-x-2 bg-card border-4 border-foreground rounded-full px-4 py-2">
-            <span className="text-sm font-medium text-foreground">From Experience</span>
+            <span className="text-sm font-medium text-foreground">No Subscription</span>
             <div className="w-5 h-5 bg-foreground rounded-full flex items-center justify-center">
               <div className="w-2 h-2 bg-background transform rotate-45"></div>
             </div>

@@ -728,8 +728,8 @@ const Dashboard = () => {
               <div className="mb-4">
                 <div className="text-sm text-muted-foreground mb-1">Special Price</div>
                 <div className="flex items-baseline justify-center space-x-3">
-                  <span className="text-sm text-muted-foreground line-through">$49</span>
-                  <span className="text-3xl font-black text-foreground">$39.20</span>
+                  <span className="text-sm text-muted-foreground line-through">$29</span>
+                  <span className="text-3xl font-black text-foreground">$23.20</span>
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">One-time payment, lifetime access</p>
               </div>

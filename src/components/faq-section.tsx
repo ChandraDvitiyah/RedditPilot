@@ -31,7 +31,7 @@ const FAQSection = () => {
     },
     {
       question: "Can I use this for multiple projects?",
-      answer: "Yes! With your one-time $49 payment, you get lifetime access to set up an infinite number of projects within RedditPilot. Each project can have its own strategy and timeline."
+      answer: "Yes! With your one-time $29 payment, you get lifetime access to set up an infinite number of projects within RedditPilot. Each project can have its own strategy and timeline."
     },
     {
       question: "Is the result guaranteed?",

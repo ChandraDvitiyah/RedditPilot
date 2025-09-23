@@ -45,9 +45,9 @@ const PricingSection = () => {
             </div>
 
             {/* Price */}
-            <div className="mb-8">
+              <div className="mb-8">
               <div className="flex items-baseline space-x-2">
-                <span className="text-5xl font-black text-foreground">$49</span>
+                <span className="text-5xl font-black text-foreground">$29</span>
               </div>
               <p className="text-sm text-muted-foreground mt-1">One-time payment, lifetime access</p>
             </div>
