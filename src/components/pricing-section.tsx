@@ -19,7 +19,7 @@ const PricingSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-6xl font-black text-foreground mb-4">
-            Plans and pricing
+            Pricing — Simple & Forever
           </h2>
           <p className="text-lg text-muted-foreground">
             A plan that's right for you.
@@ -38,7 +38,7 @@ const PricingSection = () => {
 
             {/* Header */}
             <div className="mb-8">
-              <h3 className="text-2xl font-black text-foreground mb-2">One Time Payment</h3>
+              <h3 className="text-2xl font-black text-foreground mb-2">Pay once. Grow forever</h3>
               <p className="text-sm text-muted-foreground">
                 Get lifetime access to RedditPilot with guided playbooks and analytics.
               </p>

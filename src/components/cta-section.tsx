@@ -11,7 +11,7 @@ const CTASection = () => {
           Ready to grow on Reddit?
         </h2>
         <p className="text-lg text-purple-100 mb-12">
-          Without the Ban.
+          Skip the bans. Skip the guesswork..
         </p>
         
         <div className="space-y-4">

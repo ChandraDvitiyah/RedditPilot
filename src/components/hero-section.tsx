@@ -28,7 +28,7 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="text-lg lg:text-xl text-muted-foreground max-w-xl leading-relaxed">
-            RedditPilot's guided playbook shows you exactly what to post, when to post, and how to stay compliant. No more guesswork.
+            Tired of trial-and-error? RedditPilot gives you the exact playbook: what to post, when to post, and how to stay compliant.
           </p>
 
           {/* CTA Buttons */}

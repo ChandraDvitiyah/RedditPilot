@@ -17,7 +17,7 @@ const MarketingBuilderSection = () => {
         {/* Main Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-6xl font-black text-white mb-6">
-            Reddit strategy builder
+            Your Strategy. Done For You.
           </h2>
           <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
             Tell us about your project, target audience, and karma level. We'll build your custom Reddit growth strategy.

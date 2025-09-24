@@ -5,22 +5,22 @@ const FeaturesSection = () => {
     {
       icon: Globe,
       title: "Unlimited Projects",
-      description: "One Dashboard for all your Reddit projects, no limits to the number of projects you can create."
+      description: "Run growth across all your startups, no limits."
     },
     {
       icon: Bot,
       title: "Personalised Timeline",
-      description: "Get a step-by-step posting schedule and plan personalised to your karma level."
+      description: "Step-by-step schedule tailored to your karma level."
     },
     {
       icon: FileEdit,
-      title: "Tried and Tested templates",
-      description: "Access proven post templates that go viral and convert without triggering spam filters."
+      title: "High-Impact Templates",
+      description: "Post formats built to engage, not trigger spam filters."
     },
     {
       icon: ChartBar,
-      title: "Accurate Analytics",
-      description: "Get a deep understanding of target subreddits with clean analytics that remove the guesswork."
+      title: "Analytics That Matter",
+      description: "Know exactly where and when to post for maximum reach.."
     },
   ];
 

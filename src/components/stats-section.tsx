@@ -14,10 +14,10 @@ const StatsSection = () => {
           {/* Stat 1 */}
           <div className="bg-card border-4 border-foreground rounded-lg p-8 text-center shadow-brutal">
             <div className="text-4xl lg:text-5xl font-black text-foreground mb-2">
-              1.36 billion
+              1.36B+ users
             </div>
             <div className="text-muted-foreground font-semibold">
-              Monthly Active Users
+              waiting for your story
             </div>
           </div>
 
@@ -27,27 +27,27 @@ const StatsSection = () => {
               20+ minutes
             </div>
             <div className="text-muted-foreground font-semibold">
-              Spent per day
+              average daily attention
             </div>
           </div>
 
           {/* Stat 3 */}
           <div className="bg-card border-4 border-foreground rounded-lg p-8 text-center shadow-brutal">
             <div className="text-4xl lg:text-5xl font-black text-foreground mb-2">
-              3.4 million
+              3.4M subreddits
             </div>
             <div className="text-muted-foreground font-semibold">
-              Active Subreddits
+              across every niche
             </div>
           </div>
 
           {/* Stat 4 */}
           <div className="bg-card border-4 border-foreground rounded-lg p-8 text-center shadow-brutal">
             <div className="text-4xl lg:text-5xl font-black text-foreground mb-2">
-              22+ billion
+              22B+ posts
             </div>
             <div className="text-muted-foreground font-semibold">
-              content created annually
+              created each year
             </div>
           </div>
         </div>
