@@ -867,6 +867,11 @@ const Dashboard = () => {
       <Dialog open={showPricingModal} onOpenChange={(open) => setShowPricingModal(open)}>
         <DialogContent className="max-w-md w-full">
           <div className="relative p-6">
+            <div className="absolute -top-4 right-6">
+              <span className="bg-amber-500 text-foreground px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                EARLY ACCESS OFFER
+              </span>
+            </div>
 
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-1">One Time Payment</h3>
@@ -879,6 +884,7 @@ const Dashboard = () => {
                   <span className="text-3xl font-black text-foreground">$39</span>
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">One-time payment, lifetime access</p>
+                <p className="text-sm font-semibold text-amber-500 mt-2">Limited seats available — price may increase soon</p>
               </div>
 
               <div className="mb-2">

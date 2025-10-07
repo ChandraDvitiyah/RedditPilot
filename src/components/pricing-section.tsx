@@ -30,9 +30,9 @@ const PricingSection = () => {
         <div className="max-w-md mx-auto">
           <div className="bg-card border-4 border-foreground rounded-2xl p-8 shadow-brutal relative">
             {/* Badge */}
-            <div className="absolute -top-3 right-6">
-              <span className="bg-foreground text-background px-4 py-1 rounded-full text-sm font-bold">
-                POPULAR
+            <div className="absolute -top-4 right-6">
+              <span className="bg-amber-500 text-foreground px-4 py-2 rounded-full text-sm font-extrabold shadow-sm">
+                EARLY ACCESS OFFER
               </span>
             </div>
 
@@ -50,6 +50,7 @@ const PricingSection = () => {
                 <span className="text-5xl font-black text-foreground">$39</span>
               </div>
               <p className="text-sm text-muted-foreground mt-1">One-time payment, lifetime access</p>
+              <p className="text-sm font-semibold text-amber-500 mt-2">Limited seats available — price may increase soon</p>
             </div>
 
             {/* CTA Button */}
