@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -8,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import PricingSection from "@/components/pricing-section";
 import { buildDodoPaymentLink } from "@/lib/dodo";
-import { Plus, Target, TrendingUp, X, Loader2 } from "lucide-react";
+import { Plus, Target, TrendingUp, X, Loader2, Hash } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
@@ -27,8 +28,27 @@ const Dashboard = () => {
   const [projectForm, setProjectForm] = useState({
     name: "",
     karma: "",
+    category: "",
     targetSubreddits: [""]
   });
+
+  const CATEGORY_OPTIONS = [
+    { value: "saas", label: "Tech Tool/SaaS" },
+    { value: "education", label: "Education" },
+    { value: "skincare", label: "Skincare" },
+    { value: "other", label: "Others" },
+  ];
+
+  const CATEGORY_SUBREDDITS: Record<string, string[]> = {
+    saas: ["r/saas", "r/sideproject", "r/microsaas", "r/indiehackers", "r/b2bsaas", "r/buildinpublic"],
+    education: ["r/getstudying", "r/studytips", "r/college", "r/EngineeringStudents", "r/medicalschool"],
+    skincare: ["r/SkincareAddiction", "r/Skincare_Addiction", "r/SkincareAddicts", "r/SkincareAddictionLux", "r/beauty", "r/AsianBeauty"],
+    other: [],
+  };
+
+  // Track which recommended subreddits are selected
+  const [subredditSuggestions, setSubredditSuggestions] = useState<Record<number, string[]>>({});
+  const [focusedInputIndex, setFocusedInputIndex] = useState<number | null>(null);
 
   // Convert actual Reddit karma to 1-5 scale
   const convertKarmaToScale = (karma: number): number => {
@@ -114,6 +134,26 @@ const Dashboard = () => {
     // remove any duplicate slashes
     s = s.replace(/\/+/g, "/");
     return s;
+  };
+
+  // Get suggestions based on category and input
+  const getSuggestionsForInput = (input: string, category: string): string[] => {
+    if (!category || category === 'other') return [];
+    
+    const allSuggestions = CATEGORY_SUBREDDITS[category] || [];
+    if (!input || input.trim().length < 2) {
+      // Show all suggestions for the category when input is empty or too short
+      return allSuggestions.slice(0, 5);
+    }
+    
+    const normalized = input.toLowerCase().replace(/^r\//, '');
+    // Filter suggestions that match the input
+    const filtered = allSuggestions.filter(sub => 
+      sub.toLowerCase().includes(normalized) || 
+      sub.toLowerCase().replace(/^r\//, '').startsWith(normalized)
+    );
+    
+    return filtered.slice(0, 5);
   };
 
   const handleGeneratePlan = async () => {
@@ -409,6 +449,7 @@ const Dashboard = () => {
             projectId: project.id,
             subreddits: cleanSubreddits,
             karmaLevel: karmaScale,
+            category: projectForm.category || null,
             analytics: allAnalytics || [],
           }),
         });
@@ -497,6 +538,7 @@ const Dashboard = () => {
       setProjectForm({
         name: "",
         karma: "",
+        category: "",
         targetSubreddits: [""]
       });
       setShowProjectModal(false);
@@ -620,13 +662,21 @@ const Dashboard = () => {
       </main>
 
       {/* Project Setup Modal */}
-      <Dialog open={showProjectModal} onOpenChange={setShowProjectModal}>
-        <DialogContent className="max-w-2xl">
+      <Dialog open={showProjectModal} onOpenChange={(open) => {
+        setShowProjectModal(open);
+        if (!open) {
+          // Reset all state when closing
+          setSubredditSuggestions({});
+          setFocusedInputIndex(null);
+        }
+      }}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold">Project Setup</DialogTitle>
           </DialogHeader>
           
           <div className="space-y-6 py-4">
+
             {/* Project Name */}
             <div className="space-y-2">
               <Label htmlFor="project-name">Project Name</Label>
@@ -636,6 +686,29 @@ const Dashboard = () => {
                 value={projectForm.name}
                 onChange={(e) => setProjectForm(prev => ({ ...prev, name: e.target.value }))}
               />
+            </div>
+
+            {/* Category Selection */}
+            <div className="space-y-2">
+              <Label htmlFor="project-category">Category</Label>
+              <Select value={projectForm.category} onValueChange={(val) => {
+                setProjectForm(prev => ({ ...prev, category: val, targetSubreddits: [""] }));
+                setSubredditSuggestions({});
+              }}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a category" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    {CATEGORY_OPTIONS.map(opt => (
+                      <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+              {projectForm.category && (
+                <p className="text-xs text-muted-foreground mt-2">Start typing a subreddit below to receive contextual suggestions</p>
+              )}
             </div>
 
             {/* Reddit Karma */}
@@ -650,27 +723,101 @@ const Dashboard = () => {
               />
             </div>
 
-            {/* Target Subreddits */}
+            {/* Target Subreddits & Recommendations */}
             <div className="space-y-2">
               <Label>Target Subreddits</Label>
+              {/* Editable subreddit inputs with dynamic suggestions */}
               <div className="space-y-2">
                 {projectForm.targetSubreddits.map((subreddit, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <Input
-                      placeholder="e.g. r/SaaS or just SaaS"
-                      value={subreddit}
-                      onChange={(e) => handleSubredditChange(index, e.target.value)}
-                      onBlur={(e) => handleSubredditChange(index, normalizeSubreddit(e.target.value))}
-                    />
-                    {projectForm.targetSubreddits.length > 1 && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleRemoveSubreddit(index)}
-                      >
-                        <X className="w-4 h-4" />
-                      </Button>
-                    )}
+                  <div key={index} className="relative">
+                    <div className="flex items-center space-x-2">
+                      <div className="flex-1 relative">
+                        <Input
+                          placeholder="e.g. r/SaaS or just SaaS"
+                          value={subreddit}
+                          onFocus={() => {
+                            setFocusedInputIndex(index);
+                            if (projectForm.category && projectForm.category !== 'other') {
+                              const suggestions = getSuggestionsForInput(subreddit, projectForm.category);
+                              setSubredditSuggestions(prev => ({ ...prev, [index]: suggestions }));
+                            }
+                          }}
+                          onBlur={() => {
+                            // Delay to allow click on suggestion
+                            setTimeout(() => {
+                              setFocusedInputIndex(null);
+                              setSubredditSuggestions(prev => {
+                                const newSugg = { ...prev };
+                                delete newSugg[index];
+                                return newSugg;
+                              });
+                            }, 200);
+                            handleSubredditChange(index, normalizeSubreddit(subreddit));
+                          }}
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            handleSubredditChange(index, value);
+                            // Update suggestions as user types
+                            if (projectForm.category && projectForm.category !== 'other') {
+                              const suggestions = getSuggestionsForInput(value, projectForm.category);
+                              setSubredditSuggestions(prev => ({ ...prev, [index]: suggestions }));
+                            }
+                          }}
+                        />
+                        {/* Suggestions dropdown */}
+                        {focusedInputIndex === index && subredditSuggestions[index] && subredditSuggestions[index].length > 0 && (
+                          <div className="absolute z-10 w-full mt-1 bg-white dark:bg-gray-900 border-2 border-orange-200 dark:border-orange-800 rounded-lg shadow-lg max-h-48 overflow-y-auto">
+                            <div className="p-2 text-xs text-muted-foreground border-b flex items-center gap-1">
+                              <span className="w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse"></span>
+                              Suggested communities
+                            </div>
+                            {subredditSuggestions[index].map((suggestion) => (
+                              <button
+                                key={suggestion}
+                                type="button"
+                                className="w-full text-left px-3 py-2 hover:bg-orange-50 dark:hover:bg-orange-950/30 text-sm flex items-center justify-between group"
+                                onClick={() => {
+                                  handleSubredditChange(index, suggestion);
+                                  setFocusedInputIndex(null);
+                                  setSubredditSuggestions(prev => {
+                                    const newSugg = { ...prev };
+                                    delete newSugg[index];
+                                    return newSugg;
+                                  });
+                                }}
+                              >
+                                <div className="flex items-center gap-3">
+                                  <div className="w-8 h-8 bg-muted/60 rounded flex items-center justify-center">
+                                    <Hash className="w-4 h-4 text-orange-600" />
+                                  </div>
+                                  <div>
+                                    <div className="font-medium text-foreground">{suggestion}</div>
+                                    <div className="text-xs text-muted-foreground">subreddit</div>
+                                  </div>
+                                </div>
+                                <div className="text-xs text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">Select</div>
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      {projectForm.targetSubreddits.length > 1 && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => {
+                            handleRemoveSubreddit(index);
+                            setSubredditSuggestions(prev => {
+                              const newSugg = { ...prev };
+                              delete newSugg[index];
+                              return newSugg;
+                            });
+                          }}
+                        >
+                          <X className="w-4 h-4" />
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 ))}
                 <div className="space-y-2">
@@ -728,8 +875,8 @@ const Dashboard = () => {
               <div className="mb-4">
                 <div className="text-sm text-muted-foreground mb-1">Special Price</div>
                 <div className="flex items-baseline justify-center space-x-3">
-                  <span className="text-sm text-muted-foreground line-through">$29</span>
-                  <span className="text-3xl font-black text-foreground">$23.20</span>
+                  <span className="text-sm text-muted-foreground line-through">$49</span>
+                  <span className="text-3xl font-black text-foreground">$39</span>
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">One-time payment, lifetime access</p>
               </div>
@@ -751,7 +898,7 @@ const Dashboard = () => {
                 </Button>
               </div>
               <div className="text-center mt-2">
-                <div className="text-sm font-medium">Use code <span className="font-bold">PRIVATE20</span> at checkout for 20% off</div>
+                <div className="text-sm font-medium">Use code <span className="font-bold">PRIVATE20</span> at checkout for 20% off — brings $39 down to <span className="font-bold">$31.20</span></div>
               </div>
 
               <ul className="text-sm space-y-1 text-left max-w-sm mx-auto">

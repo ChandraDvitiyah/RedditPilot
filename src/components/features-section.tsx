@@ -22,6 +22,11 @@ const FeaturesSection = () => {
       title: "Analytics That Matter",
       description: "Know exactly where and when to post for maximum reach.."
     },
+    {
+      icon: MessageSquare,
+      title: "Subreddit Suggestions",
+      description: "Category-aware subreddit recommendations you can accept or replace."
+    },
   ];
 
   return (
@@ -44,8 +49,8 @@ const FeaturesSection = () => {
           </p>
         </div>
 
-        {/* Features Grid - centered and enforced 2x2 on md+ */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-center max-w-4xl mx-auto">
+  {/* Features Grid - 3x2 on md+ with up to 5 cards */}
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-10 justify-center max-w-6xl mx-auto">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
