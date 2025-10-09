@@ -41,7 +41,7 @@ const FeaturesSection = () => {
           </div>
           
           <h2 className="text-4xl lg:text-5xl xl:text-6xl font-black text-foreground mb-6 leading-tight">
-            Reddit growth made simple
+            User Acquisition on Reddit, Simplified
           </h2>
           
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

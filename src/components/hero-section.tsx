@@ -22,13 +22,13 @@ const HeroSection = () => {
           {/* Main Headline */}
           <div className="space-y-4">
             <h1 className="text-5xl lg:text-6xl xl:text-7xl font-black text-foreground leading-tight tracking-tight font-black">
-              Reddit Growth <br /> Without getting Banned
+              Acquire Users <br /> From Reddit Effortlessly
             </h1>
           </div>
 
           {/* Subtitle */}
           <p className="text-lg lg:text-xl text-muted-foreground max-w-xl leading-relaxed">
-            Tired of trial-and-error? RedditPilot gives you the exact playbook: what to post, when to post, and how to stay compliant.
+            Tired of trial-and-error? RedditPilot gives you the exact playbook: what to post and when to post. First users easily acquired.
           </p>
 
           {/* CTA Buttons */}

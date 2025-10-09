@@ -34,7 +34,7 @@ const StatsSection = () => {
           {/* Stat 3 */}
           <div className="bg-card border-4 border-foreground rounded-lg p-8 text-center shadow-brutal">
             <div className="text-4xl lg:text-5xl font-black text-foreground mb-2">
-              3.4M subreddits
+              3M+ subreddits
             </div>
             <div className="text-muted-foreground font-semibold">
               across every niche
