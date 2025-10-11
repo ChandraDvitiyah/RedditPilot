@@ -22,7 +22,7 @@ const HeroSection = () => {
           {/* Main Headline */}
           <div className="space-y-4">
             <h1 className="text-5xl lg:text-6xl xl:text-7xl font-black text-foreground leading-tight tracking-tight font-black">
-              Acquire Users <br /> From Reddit Effortlessly
+              Acquire Users <br /> From Reddit Without Bans
             </h1>
           </div>
 
@@ -53,6 +53,12 @@ const HeroSection = () => {
               </div>
               <span>Watch Demo</span>
             </button>
+          </div>
+          {/* Small badge positioned extreme right */}
+          <div className="absolute right-6 bottom-6 hidden md:block">
+            <a href="https://findly.tools/redditpilot?utm_source=redditpilot" target="_blank" rel="noopener noreferrer" className="inline-block">
+              <img src="https://findly.tools/badges/findly-tools-badge-dark.svg" alt="Featured on findly.tools" width={100} />
+            </a>
           </div>
         </div>
 
