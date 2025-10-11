@@ -22,10 +22,7 @@ const Footer = () => {
           <div className="w-2/3" />
           <div className="w-1/3 flex justify-end items-center space-x-4">
             <a href="https://fazier.com/launches/redditpilot.com" target="_blank" rel="noopener noreferrer" className="hidden sm:inline-block">
-              <img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light" alt="Fazier badge" width={140} />
-            </a>
-            <a href="https://findly.tools/redditpilot?utm_source=redditpilot" target="_blank" rel="noopener noreferrer" className="hidden sm:inline-block">
-              <img src="https://findly.tools/badges/findly-tools-badge-dark.svg" alt="Featured on findly.tools" width={120} />
+              <img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light" alt="Fazier badge" width={180} />
             </a>
           </div>
         </div>
