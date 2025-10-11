@@ -18,6 +18,7 @@ import CaseStudy from "./pages/CaseStudy";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import Payment from "./pages/Payment";
+import FeaturedOn from "./pages/FeaturedOn";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,7 @@ const App = () => (
             } />
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/case-studies/:slug" element={<CaseStudy />} />
+            <Route path="/featured-on" element={<FeaturedOn />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/refund" element={<Refund />} />
