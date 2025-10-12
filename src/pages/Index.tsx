@@ -2,6 +2,7 @@ import Navigation from "@/components/ui/navigation";
 import HeroSection from "@/components/hero-section";
 import StatsSection from "@/components/stats-section";
 import FeaturesSection from "@/components/features-section";
+import FromExperienceSection from "@/components/from-experience-section";
 import MarketingBuilderSection from "@/components/marketing-builder-section";
 import TargetingSection from "@/components/targeting-section";
 import AutopilotSection from "@/components/autopilot-section";
@@ -22,6 +23,7 @@ const Index = () => {
       </div>
       <div id="features">
         <FeaturesSection />
+        <FromExperienceSection />
         <MarketingBuilderSection />
         <TargetingSection />
         <AutopilotSection />
