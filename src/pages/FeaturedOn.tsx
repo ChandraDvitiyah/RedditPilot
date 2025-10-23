@@ -5,6 +5,13 @@ const FeaturedOn = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-4xl mx-auto px-6 py-20">
+        <Link 
+          to="/" 
+          className="inline-flex items-center bg-orange-500 text-white border-4 border-foreground px-6 py-3 rounded-lg font-bold shadow-brutal hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all mb-8"
+        >
+          ← Go Back to Landing Page
+        </Link>
+        
         <h1 className="text-4xl font-black mb-6">Featured On</h1>
         <p className="text-muted-foreground mb-8">A collection of places we've been featured.</p>
         <div className="flex flex-wrap gap-3">
