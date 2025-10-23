@@ -70,67 +70,6 @@ const caseData: Record<string, CaseEntry> = {
       </div>
     ),
     metrics: ['$200 MRR', 'Early prototypes validated via Reddit']
-  },
-  'savewise': {
-    title: 'Savewise',
-    body: (
-      <div>
-        <h3 className="text-lg font-semibold mb-2">Snapshot</h3>
-        <ul className="list-disc ml-6 mb-4 text-muted-foreground">
-          <li>Product: Savewise (earn more credit-card points/miles on purchases)</li>
-          <li>Stage: Bootstrapped, solo founder</li>
-          <li>Outcome: ~$25K/month revenue, tens of thousands of users, ~1,500 paying customers</li>
-          <li>Channel Focus: Reddit (community-led acquisition)</li>
-        </ul>
-
-        <h3 className="text-lg font-semibold mb-2">Goal</h3>
-        <p className="mb-4">Find early users who actually care about maximizing points/miles—and turn their feedback loops into product-market pull, without paid ads.</p>
-
-        <h3 className="text-lg font-semibold mb-2">Why Reddit</h3>
-        <ul className="list-disc ml-6 mb-4 text-muted-foreground">
-          <li>High-intent, problem-native communities (credit cards, travel hacking, deal-stacking).</li>
-          <li>Comment-first culture enables low-risk testing of value props and feature gaps.</li>
-          <li>Mods/weekly threads provide structured, “allowed” promotional pathways when done right.</li>
-        </ul>
-
-        <h3 className="text-lg font-semibold mb-2">Strategy (Reddit-Only)</h3>
-        <ol className="list-decimal ml-6 mb-4 text-muted-foreground">
-          <li className="mb-2">Map the Right Subreddits: Brainstorm 5–15 interest clusters and use mapping tools to find adjacent micro-communities.</li>
-          <li className="mb-2">Lurk Before You Post: Observe language, norms, and identify allowed posting surfaces.</li>
-          <li className="mb-2">Comment &gt; Post: Start in weekly comment threads, ask for feedback, share helpful tips, and measure resonance.</li>
-          <li className="mb-2">Close the Feedback Loop: Build features requested in threads and return with tangible improvements.</li>
-          <li className="mb-2">Mod Alignment → Top-Level Launch: After ~3.5 months, DM mods and publish a value-first top-level post.</li>
-          <li className="mb-2">Alerts to Stay Timely: Use keyword alerts to jump into fresh threads with relevant answers.</li>
-        </ol>
-
-        <h3 className="text-lg font-semibold mb-2">Execution Timeline</h3>
-        <p className="mb-4">Weeks 1–2: Research subs and norms. Weeks 3–12: Weekly commenting cadence and iterative product updates. Month ~3.5: Secure mod approval and ship the top-level post.</p>
-
-        <h3 className="text-lg font-semibold mb-2">Numbers & Outcomes</h3>
-        <ul className="list-disc ml-6 mb-4 text-muted-foreground">
-          <li>Business-wide: ~$25,000/month revenue; tens of thousands of users; ~1,500 paying customers.</li>
-          <li>Reddit-specific: Repeated presence in weekly threads, mod-approved top post that drove a major inflection; exact Reddit-only traffic counts not provided.</li>
-        </ul>
-
-        <h3 className="text-lg font-semibold mb-2">What Made Reddit Work</h3>
-        <ul className="list-disc ml-6 mb-4 text-muted-foreground">
-          <li>Precision audience fit: targeted the right subs.</li>
-          <li>Cultural fit: comment-first, useful contributions.</li>
-          <li>Iterative credibility: shipping features requested by community.</li>
-          <li>Mod partnership: permission plus timing for maximal exposure.</li>
-          <li>Speed to relevance: keyword alerts kept him present in fresh conversations.</li>
-        </ul>
-
-        <h3 className="text-lg font-semibold mb-2">Playbook You Can Copy</h3>
-        <p className="mb-4">Identify 5–15 user-interest keywords; map 6–10 target subs; spend 2 weeks observing; run a 6–10 week comment sprint; track signals and ship requested features; DM mods for a compliant top post; maintain alerts.</p>
-
-        <h3 className="text-lg font-semibold mb-2">Key Takeaway</h3>
-        <p className="mb-4">Reddit supplied both users and the product roadmap. By embedding in comment threads first and launching with mod buy-in, Avneesh converted Reddit into durable demand without paid ads.</p>
-
-        <p className="text-sm italic text-muted-foreground mt-6">Disclaimer: This case study summarizes Savewise's Reddit strategy and outcomes. It is illustrative of Reddit marketing practices; Savewise did not necessarily use RedditPilot, and this case study does not imply endorsement or results from RedditPilot.</p>
-      </div>
-    ),
-    metrics: ['$25K MRR', '≈1,500 paying customers']
   }
 };
 

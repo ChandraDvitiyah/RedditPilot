@@ -13,12 +13,6 @@ const MarketingCardsSection = () => {
       excerpt: "A Micro SaaS that scaled to $200 MRR primarily through reddit in 2 months.",
       to: "/case-studies/sonar",
       img: "https://ik.imagekit.io/samudrua/RedditPilot/sonar.png?updatedAt=1758358743174"
-    },
-    {
-      title: "Savewise",
-      excerpt: "Avneesh grew his SaaS to $26k MRR mostly through Facebook and Reddit.",
-      to: "/case-studies/savewise",
-      img: "https://ik.imagekit.io/samudrua/RedditPilot/Savewise.png?updatedAt=1758358743098"
     }
   ];
 
