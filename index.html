@@ -6,10 +6,35 @@
 <title> Reddit Marketing OS - RedditPilot </title>
     <meta name="description" content="The platform to grow on reddit and market your product without getting banned!" />
   
+  <!-- Critical CSS - Inlined for fastest render -->
+  <style>
+    :root {
+      --background: 42 33% 95%;
+      --foreground: 0 0% 8%;
+      --card: 0 0% 98%;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      -webkit-font-smoothing: antialiased;
+    }
+    #root { min-height: 100vh; }
+    .animate-spin {
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+  
   <!-- Preconnect to critical domains -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://ik.imagekit.io">
+  <link rel="dns-prefetch" href="https://cloud.umami.is">
   
   <!-- Preload critical font with font-display swap -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap">
