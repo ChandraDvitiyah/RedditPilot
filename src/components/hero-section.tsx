@@ -61,9 +61,14 @@ const HeroSection = () => {
           {/* Background Image */}
           <div className="relative">
             <img
-              src="https://ik.imagekit.io/samudrua/RedditPilot/herolanding?updatedAt=1758307494266"
+              src="https://ik.imagekit.io/samudrua/RedditPilot/herolanding?updatedAt=1758307494266&tr=w-800,f-auto,q-85"
+              srcSet="https://ik.imagekit.io/samudrua/RedditPilot/herolanding?updatedAt=1758307494266&tr=w-400,f-auto,q-85 400w,
+                      https://ik.imagekit.io/samudrua/RedditPilot/herolanding?updatedAt=1758307494266&tr=w-800,f-auto,q-85 800w,
+                      https://ik.imagekit.io/samudrua/RedditPilot/herolanding?updatedAt=1758307494266&tr=w-1200,f-auto,q-85 1200w"
+              sizes="(max-width: 768px) 100vw, 50vw"
               alt="Founder using RedditPilot dashboard"
               className="w-full h-[600px] object-cover border-4 border-foreground"
+              loading="eager"
             />
             
             {/* Floating UI Cards */}

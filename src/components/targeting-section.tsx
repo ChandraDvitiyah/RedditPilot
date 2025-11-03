@@ -26,9 +26,13 @@ const TargetingSection = () => {
           <div className="relative">
             <div className="bg-card rounded-2xl overflow-hidden shadow-brutal">
               <img
-                src="https://ik.imagekit.io/samudrua/RedditPilot/subredditanalytics?updatedAt=1758315937525"
+                src="https://ik.imagekit.io/samudrua/RedditPilot/subredditanalytics?updatedAt=1758315937525&tr=w-900,h-450,f-auto,q-85"
+                srcSet="https://ik.imagekit.io/samudrua/RedditPilot/subredditanalytics?updatedAt=1758315937525&tr=w-450,h-300,f-auto,q-85 450w,
+                        https://ik.imagekit.io/samudrua/RedditPilot/subredditanalytics?updatedAt=1758315937525&tr=w-900,h-450,f-auto,q-85 900w"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 alt="subreddit analytics"
                 className="w-full h-64 sm:h-72 md:h-80 object-cover block"
+                loading="lazy"
               />
             </div>
           </div>

@@ -1,4 +1,5 @@
 import { Play } from "lucide-react";
+import LazyYouTube from "@/components/ui/lazy-youtube";
 
 const VideoDemoSection = () => {
   return (
@@ -19,24 +20,18 @@ const VideoDemoSection = () => {
           <div className="bg-card rounded-2xl p-0 shadow-brutal relative overflow-hidden min-w-0">
             {/* Small screens: keep 16:9 aspect; Medium+: larger fixed heights */}
             <div className="block md:hidden aspect-w-16 aspect-h-9 min-w-0">
-              <iframe
-                className="w-full h-full block max-w-full"
-                src="https://www.youtube.com/embed/FhQ3-iGkLa8"
+              <LazyYouTube
+                videoId="FhQ3-iGkLa8"
                 title="RedditPilot Demo"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+                className="w-full h-full block max-w-full"
               />
             </div>
 
             <div className="hidden md:block w-full md:h-[720px] lg:h-[840px] min-w-0">
-              <iframe
-                className="w-full h-full block max-w-full"
-                src="https://www.youtube.com/embed/FhQ3-iGkLa8"
+              <LazyYouTube
+                videoId="FhQ3-iGkLa8"
                 title="RedditPilot Demo"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+                className="w-full h-full block max-w-full"
               />
             </div>
           </div>

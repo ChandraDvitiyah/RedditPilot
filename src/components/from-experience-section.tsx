@@ -28,11 +28,15 @@ const FromExperienceSection = () => {
               className="absolute left-0 top-0 w-[60%] md:w-[55%] h-[350px] md:h-[450px] bg-card border-4 border-foreground shadow-brutal overflow-hidden"
               style={{ transform: 'rotate(-6deg)', zIndex: 1 }}
             >
-              <div className="w-full h-full bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <img src="https://ik.imagekit.io/samudrua/RedditPilot/Group2.png?updatedAt=1760284071319" alt="Impressions Images from Reddit" />
-                </div>
-              </div>
+              <img 
+                src="https://ik.imagekit.io/samudrua/RedditPilot/Group2.png?updatedAt=1760284071319&tr=w-300,f-auto,q-85" 
+                srcSet="https://ik.imagekit.io/samudrua/RedditPilot/Group2.png?updatedAt=1760284071319&tr=w-300,f-auto,q-85 300w,
+                        https://ik.imagekit.io/samudrua/RedditPilot/Group2.png?updatedAt=1760284071319&tr=w-500,f-auto,q-85 500w"
+                sizes="(max-width: 768px) 60vw, 300px"
+                alt="Reddit campaign metrics and dashboards" 
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
             </div>
 
             {/* Second Image - Tilted Right, Overlapping */}
@@ -40,11 +44,15 @@ const FromExperienceSection = () => {
               className="absolute right-0 top-12 md:top-8 w-[60%] md:w-[55%] h-[350px] md:h-[450px] bg-card border-4 border-foreground shadow-brutal overflow-hidden"
               style={{ transform: 'rotate(8deg)', zIndex: 2 }}
             >
-              <div className="w-full h-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                <div className="text-center p-6">
-                 <img src="https://ik.imagekit.io/samudrua/RedditPilot/Group1.png?updatedAt=1760284071290" alt="Impressions Images from Reddit" />
-                </div>
-              </div>
+              <img 
+                src="https://ik.imagekit.io/samudrua/RedditPilot/Group1.png?updatedAt=1760284071290&tr=w-300,f-auto,q-85" 
+                srcSet="https://ik.imagekit.io/samudrua/RedditPilot/Group1.png?updatedAt=1760284071290&tr=w-300,f-auto,q-85 300w,
+                        https://ik.imagekit.io/samudrua/RedditPilot/Group1.png?updatedAt=1760284071290&tr=w-500,f-auto,q-85 500w"
+                sizes="(max-width: 768px) 60vw, 300px"
+                alt="Founders working through Reddit campaigns" 
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
