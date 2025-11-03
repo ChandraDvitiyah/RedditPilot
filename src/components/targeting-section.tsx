@@ -12,13 +12,13 @@ const TargetingSection = () => {
           {/* Left - Content */}
           <div>
             <h3 className="text-4xl lg:text-5xl font-black text-white mb-6">
-              Subreddit analytics<br />& insights
+              Post when your<br />users are active
             </h3>
             <p className="text-lg text-muted-foreground mb-8">
-              Track engagement, optimal posting times for each subreddit in your strategy. Never guess when or what to post again.
+              Real-time analytics show you the best times to post in each subreddit. Maximize visibility and user signups.
             </p>
             <Button variant="secondary" size="lg" className="font-bold" onClick={() => navigate('/dashboard')}>
-              View Analytics
+              See analytics
             </Button>
           </div>
 

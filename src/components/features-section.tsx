@@ -5,27 +5,27 @@ const FeaturesSection = () => {
     {
       icon: Globe,
       title: "Unlimited Projects",
-      description: "Run growth across all your startups, no limits."
+      description: "Launch multiple products without limits."
     },
     {
       icon: Bot,
-      title: "Personalised Timeline",
-      description: "Step-by-step schedule tailored to your karma level."
+      title: "Custom Timeline",
+      description: "AI-generated posting schedule matched to your karma."
     },
     {
       icon: FileEdit,
-      title: "High-Impact Templates",
-      description: "Post formats built to engage, not trigger spam filters."
+      title: "Proven Templates",
+      description: "Post formats that convert without triggering spam filters."
     },
     {
       icon: ChartBar,
-      title: "Analytics That Matter",
-      description: "Know exactly where and when to post for maximum reach.."
+      title: "Smart Analytics",
+      description: "See exactly when and where to post for maximum growth."
     },
     {
       icon: MessageSquare,
-      title: "Subreddit Suggestions",
-      description: "Category-aware subreddit recommendations you can accept or replace."
+      title: "Subreddit Finder",
+      description: "Discover high-converting communities for your niche."
     },
   ];
 
@@ -41,11 +41,11 @@ const FeaturesSection = () => {
           </div>
           
           <h2 className="text-4xl lg:text-5xl xl:text-6xl font-black text-foreground mb-6 leading-tight">
-            User Acquisition on Reddit, Simplified
+            Get your first users faster
           </h2>
           
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            RedditPilot gives founders and creators everything they need to grow on Reddit without the trial and error.
+            Everything you need to acquire users from Reddit—without the guesswork or ban risk.
           </p>
         </div>
 

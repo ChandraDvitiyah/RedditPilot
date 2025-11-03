@@ -26,13 +26,13 @@ const AutopilotSection = () => {
           {/* Right - Content */}
           <div>
             <h3 className="text-4xl lg:text-5xl font-black text-white mb-6">
-              Follow your posting<br />timeline
+              Never run out of<br />things to post
             </h3>
             <p className="text-lg text-muted-foreground mb-8">
-              Get your personalized posting schedule with ready-to-use templates that follow Reddit's best practices. Know exactly what to post and when.
+              Get a complete posting calendar with ready-to-use templates. Each post is designed to attract users without triggering bans.
             </p>
             <Button variant="secondary" size="lg" className="font-bold" onClick={() => navigate('/dashboard')}>
-              Get My Timeline
+              Get my timeline
             </Button>
           </div>
         </div>

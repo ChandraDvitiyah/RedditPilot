@@ -13,29 +13,29 @@ const FAQSection = () => {
   };
 
   const faqs = [
-        {
-      question: "Why Reddit?",
-      answer: "Reddit is one of the largest social platforms on the internet and one which allows you to target specific communities and without any special algorithm or a large following."
+    {
+      question: "How quickly can I start seeing results?",
+      answer: "Results vary based on your product, target audience, and consistency. Most founders who follow the timeline see engagement and early traction within their first few weeks of posting. Success depends on product-market fit and execution."
     },
     {
-      question: "Is RedditPilot beginner friendly?",
-      answer: "RedditPilot can support a wide range of users, from beginners to experienced marketers. The personalised timeline will be designed to be easy to follow, with clear instructions and templates that anyone can use."
+      question: "Will I get banned?",
+      answer: "Our templates and timelines are designed specifically to avoid bans. We account for your karma level and give you posting schedules that build trust with communities before promoting. Follow the guidance, and you'll stay compliant with Reddit's rules."
     },
     {
-      question: "What's in for the user?",
-      answer: "You will get a centralised dashboard for all your projects, personalised timeline for each of the projects and also validated templates along with a detailed Subreddit Analytics tool."
+      question: "Do I need Reddit experience?",
+      answer: "No. RedditPilot is built for founders with zero Reddit experience. You'll get step-by-step guidance, ready-to-use templates, and timing recommendations—everything you need to start safely."
     },
     {
-      question: "How do I know when and what to post?",
-      answer: "RedditPilot's subreddit analytics help you identify the best times and days to post for your specific project or business. And for each post in your timeline, you'll get a recommended template which you can use."
+      question: "Can I use this for multiple products?",
+      answer: "Yes. Your one-time payment includes unlimited projects. Create separate timelines and strategies for each product you're launching."
     },
     {
-      question: "Can I use this for multiple projects?",
-      answer: "Yes! With your one-time $29 payment, you get lifetime access to set up an infinite number of projects within RedditPilot. Each project can have its own strategy and timeline."
+      question: "What if my product doesn't fit a template?",
+      answer: "RedditPilot supports SaaS, education, skincare, and general products. Our templates are flexible and can be adapted to most niches. Plus, you get subreddit suggestions tailored to your category."
     },
     {
-      question: "Is the result guaranteed?",
-      answer: "RedditPilot does not guarantee specific results. While we provide tools and recommendations, success depends on various factors beyond our control."
+      question: "What's your refund policy?",
+      answer: "Due to the instant delivery of digital services and analytics, all sales are final. We evaluate exceptional technical issues on a case-by-case basis. Please review our full refund policy for details."
     },
   ];
 
@@ -45,10 +45,10 @@ const FAQSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-6xl font-black text-foreground mb-4">
-            Frequently Asked Questions
+            Common questions
           </h2>
           <p className="text-lg text-muted-foreground">
-            Everything you need to know about RedditPilot
+            Everything you need to know to get started
           </p>
         </div>
 

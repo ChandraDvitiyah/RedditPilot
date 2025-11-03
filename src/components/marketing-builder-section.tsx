@@ -17,10 +17,10 @@ const MarketingBuilderSection = () => {
         {/* Main Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-6xl font-black text-white mb-6">
-            Your Strategy. Done For You.
+            Your Reddit strategy, instantly
           </h2>
           <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
-            Tell us about your project, target audience, and karma level. We'll build your custom strategy to acquire users from Reddit.
+            Answer a few questions about your product and audience. Get a complete growth plan tailored to you.
           </p>
         </div>
 
@@ -45,13 +45,13 @@ const MarketingBuilderSection = () => {
           {/* Right - Content */}
           <div>
             <h3 className="text-4xl lg:text-5xl font-black text-white mb-6">
-              Get Personalised<br />Plan
+              Tailored to your<br />product & karma
             </h3>
             <p className="text-lg text-muted-foreground mb-8">
-              Fill out details regarding your project and target audience in form of subreddits and we will give u a personalised growth path.
+              Every strategy is personalized for your product category and Reddit karma level. Get a step-by-step posting plan that matches where you are today.
             </p>
             <Button variant="secondary" size="lg" className="font-bold" onClick={() => navigate('/dashboard')}>
-              Start Building
+              Create my plan
             </Button>
           </div>
         </div>

@@ -15,12 +15,11 @@ const FromExperienceSection = () => {
           </div>
           
           <h2 className="text-4xl lg:text-5xl xl:text-6xl font-black text-foreground mb-6 leading-tight">
-            From Experience
+            Built by founders who've grown on Reddit
           </h2>
           
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We've generated hundreds of thousands of impressions on Reddit ourselves. 
-            RedditPilot is built from real experience, not theory.
+            Real founders. Real campaigns. Real results. Every feature is battle-tested.
           </p>
         </div>
 
@@ -64,13 +63,10 @@ const FromExperienceSection = () => {
         {/* Bottom Copy */}
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-            RedditPilot isn't built by marketers guessing what works. It's built by founders who've 
-            been in the trenches, testing strategies, getting banned, learning the hard way, and 
-            eventually cracking the code to consistent Reddit growth.
+            We're founders who've built products and grown them to thousands of users using Reddit. We got banned, learned the rules, and figured out what actually works.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Every feature, every template, every piece of advice comes from real campaigns that 
-            drove real users. We've done the trial and error so you don't have to.
+            RedditPilot packages everything we learned into a system that works—so you can skip the trial and error and start acquiring users on day one.
           </p>
           <div className="mt-8">
             <Button variant="orange" size="lg" className="text-lg px-8 py-4 h-auto" onClick={() => navigate('/dashboard')}>

@@ -5,7 +5,7 @@ const StatsSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-lg text-muted-foreground font-semibold">
-            Why Reddit is the perfect platform to acquire first users?
+            Why founders choose Reddit for first users
           </h2>
         </div>
 

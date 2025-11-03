@@ -28,7 +28,7 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="text-lg lg:text-xl text-muted-foreground max-w-xl leading-relaxed">
-            Turn Reddit communities into your first customers. Get a personalised plan and tools so you can attract real users without risking bans.
+            Turn Reddit into your customer acquisition engine. Get a proven posting strategy, safety-first templates, and analytics—so you attract real users without risking bans.
           </p>
 
           {/* CTA Buttons */}
