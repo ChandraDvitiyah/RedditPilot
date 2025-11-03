@@ -1,4 +1,8 @@
+import { Button } from "@/components/ui/button";
+import { useNavigate } from 'react-router-dom';
+
 const FromExperienceSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-20 bg-background border-b-4 border-foreground">
       <div className="max-w-7xl mx-auto px-6">
@@ -68,6 +72,11 @@ const FromExperienceSection = () => {
             Every feature, every template, every piece of advice comes from real campaigns that 
             drove real users. We've done the trial and error so you don't have to.
           </p>
+          <div className="mt-8">
+            <Button variant="orange" size="lg" className="text-lg px-8 py-4 h-auto" onClick={() => navigate('/dashboard')}>
+              Start My Journey
+            </Button>
+          </div>
         </div>
       </div>
     </section>

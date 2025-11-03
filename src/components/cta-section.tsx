@@ -8,7 +8,7 @@ const CTASection = () => {
     <section className="py-20 bg-gradient-to-br from-purple-600 to-purple-800 border-t-4 border-b-4 border-foreground">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-4xl lg:text-6xl font-black text-white mb-6">
-          Ready to grow on Reddit?
+          Ready to get your first users from Reddit?
         </h2>
         <p className="text-lg text-purple-100 mb-12">
           Skip the bans. Skip the guesswork..

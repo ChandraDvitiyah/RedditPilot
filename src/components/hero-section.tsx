@@ -13,7 +13,7 @@ const HeroSection = () => {
         <div className="space-y-8 lg:pr-8">
           {/* Trust Badge */}
           <div className="inline-flex items-center space-x-2 bg-card border-4 border-foreground rounded-full px-4 py-2">
-            <span className="text-sm font-medium text-foreground">No Subscription</span>
+            <span className="text-sm font-medium text-foreground">Reddit Co-Pilot</span>
             <div className="w-5 h-5 bg-foreground rounded-full flex items-center justify-center">
               <div className="w-2 h-2 bg-background transform rotate-45"></div>
             </div>
@@ -22,19 +22,19 @@ const HeroSection = () => {
           {/* Main Headline */}
           <div className="space-y-4">
             <h1 className="text-5xl lg:text-6xl xl:text-7xl font-black text-foreground leading-tight tracking-tight font-black">
-              Co Pilot For <br /> Founders to <br /> Acquire Users
+              Acquire your <br /> First users <br /> From Reddit
             </h1>
           </div>
 
           {/* Subtitle */}
           <p className="text-lg lg:text-xl text-muted-foreground max-w-xl leading-relaxed">
-            Get actionable and personalised timeline that helps acquire users from Reddit without getting banned!
+            Turn Reddit communities into your first customers. Get a personalised plan and tools so you can attract real users without risking bans.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
             <Button variant="orange" size="lg" className="text-lg px-8 py-4 h-auto" onClick={() => navigate('/dashboard')}>
-              Get Instant Access
+              Start my first campaign
             </Button>
             
             <div className="flex items-center space-x-2">

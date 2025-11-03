@@ -5,7 +5,7 @@ const StatsSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-lg text-muted-foreground font-semibold">
-            Why Reddit is the perfect platform for your growth story?
+            Why Reddit is the perfect platform to acquire first users?
           </h2>
         </div>
 
@@ -17,7 +17,7 @@ const StatsSection = () => {
               1.36B+ users
             </div>
             <div className="text-muted-foreground font-semibold">
-              waiting for your story
+              waiting for your product
             </div>
           </div>
 
@@ -27,14 +27,14 @@ const StatsSection = () => {
               20+ minutes
             </div>
             <div className="text-muted-foreground font-semibold">
-              average daily attention
+              avg daily time spent
             </div>
           </div>
 
           {/* Stat 3 */}
           <div className="bg-card border-4 border-foreground rounded-lg p-8 text-center shadow-brutal">
             <div className="text-4xl lg:text-5xl font-black text-foreground mb-2">
-              3M+ subreddits
+              3M+ subs
             </div>
             <div className="text-muted-foreground font-semibold">
               across every niche

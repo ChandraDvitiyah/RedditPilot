@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from 'react-router-dom';
-import { Plus, Power } from "lucide-react";
 
 const AutopilotSection = () => {
   const navigate = useNavigate();

@@ -20,7 +20,7 @@ const MarketingBuilderSection = () => {
             Your Strategy. Done For You.
           </h2>
           <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
-            Tell us about your project, target audience, and karma level. We'll build your custom Reddit growth strategy.
+            Tell us about your project, target audience, and karma level. We'll build your custom strategy to acquire users from Reddit.
           </p>
         </div>
 
