@@ -1,0 +1,20 @@
+# robots.txt for RedditPilot
+User-agent: *
+Allow: /
+Allow: /mediafast-alternative
+Allow: /case-studies
+Allow: /featured-on
+Allow: /terms
+Allow: /privacy
+Allow: /refund
+
+# Disallow authenticated areas
+Disallow: /dashboard
+Disallow: /timeline/
+Disallow: /analytics/
+Disallow: /profile
+Disallow: /payment
+Disallow: /login
+
+# Sitemap
+Sitemap: https://redditpilot.com/sitemap.xml
